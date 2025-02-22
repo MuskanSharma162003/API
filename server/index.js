@@ -2,7 +2,7 @@ import express from "express"
 import { dbConnect } from "./db.js"
 const app=express()
 import dotenv from "dotenv"
-import { Register } from "../controllers/userController.js"
+import { Register } from "./controllers/userController.js"
 dotenv.config()
 
 app.use(express.json())
