@@ -1,15 +1,16 @@
-import express from "express"
-import { dbConnect } from "./db.js"
-const app=express()
-import dotenv from "dotenv"
-import { Register } from "./controllers/userController.js"
-dotenv.config()
+import { Register } from "./controllers/userController.js";
+import express from "express";
+import { dbConnect } from "./db.js";
+import dotenv from "dotenv";
 
-app.use(express.json())
-app.post("/register",Register)
+dotenv.config();
+const app = express();
 
-const port=5000
-app.listen(port,()=>{
-    dbConnect()
-    console.log("server is running on",port)
-})
+// Database connection
+dbConnect();
+
+app.use(express.json());
+app.post("/register", Register);
+
+// Export the app as a serverless function
+export default app;
