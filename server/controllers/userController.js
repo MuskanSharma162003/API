@@ -1,4 +1,6 @@
 import { User } from "../models/user.js";
+
+//regitser
 export const Register = async (req, res) => {
   if(req.method=="POST"){
     try {
@@ -36,3 +38,14 @@ export const Register = async (req, res) => {
     }
   }
 };
+
+//get
+export const Get=async(req,res)=>{
+  try {
+    const user=await User.find({})
+     res.send({user})
+
+  } catch (error) {
+    res.send(error)
+  }
+}
