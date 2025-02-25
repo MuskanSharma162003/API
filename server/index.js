@@ -1,7 +1,8 @@
-import { Register } from "./controllers/userController.js";
+
 import express from "express";
 import { dbConnect } from "./db.js";
 import dotenv from "dotenv";
+import router from "./router/route.router.js";
 
 dotenv.config();
 const app = express();
@@ -11,7 +12,7 @@ const port=process.env.PORT||8002
 dbConnect();
 
 app.use(express.json());
-app.post("/api/register", Register);
+app.use("/api/reg",router)
 
 // Export the app as a serverless function
 app.listen(port,()=>{
